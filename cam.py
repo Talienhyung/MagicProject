@@ -5,12 +5,13 @@ import numpy as np
 from magic_card_identifier import *
 
 # URL de la caméra (remplacez par votre URL)
-camera_url = 'http://192.168.43.1:8080/video'
+camera_url = 'http://10.70.0.245:8080/video'
 
 # Paramètres
 capture_interval = 2  # Intervalle en secondes
 output_folder = "./captured_images/"  # Dossier de sauvegarde
 last_capture_time = time.time()
+pytesseract.pytesseract.tesseract_cmd = "C:/Program Files/Tesseract-OCR/tesseract.exe"
 
 # Créer le dossier de sauvegarde s'il n'existe pas
 import os
@@ -39,7 +40,9 @@ while True:
                 if time.time() - last_capture_time >= capture_interval:
                     # Sauvegarder l'image
                     timestamp = int(time.time())
-                    filename = f"{output_folder}image_{timestamp}.jpg"
+                    filename = f"{output_folder}image_{timestamp}.jpeg"
+                    for f in os.listdir(output_folder):
+                        os.remove(os.path.join(output_folder, f))
                     cv2.imwrite(filename, img)
                     print(f"Image sauvegardée : {filename}")
                     search(filename)

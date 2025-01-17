@@ -3,6 +3,9 @@ from PIL import Image
 import requests
 import cv2
 import re
+import os
+
+processed_path = "processed_card.jpg"
 
 def cleaning( imagelink):
     # Charger l'image
@@ -14,9 +17,11 @@ def cleaning( imagelink):
 
     # Appliquer un filtre de seuil pour améliorer la lisibilité du texte
     _, thresh = cv2.threshold(gray, 150, 255, cv2.THRESH_BINARY)
+    # thresh = cv2.adaptiveThreshold(
+    #     gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY_INV, 11, 2
+    # )
 
     # Sauvegarder l'image traitée
-    processed_path = "processed_card.jpg"
     cv2.imwrite(processed_path, thresh)
 
     return processed_path
