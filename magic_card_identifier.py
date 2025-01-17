@@ -29,9 +29,16 @@ def extract_text(processed_path):
 
 # Function to find the title (first line of the text)
 def find_title_advanced(text):
-    lines = text.strip().split("\\n")
-    title = min((line for line in lines if line.isalpha()), key=len, default=None)
-    return title
+    return remove_extra_spaces(text)
+
+
+def remove_extra_spaces(text):
+    un = re.sub(r'\s+', ' ', text).strip()
+    cleaned_text = re.sub(r'[^a-zA-Z\s]', '', un)
+    # Supprime les espaces multiples et garde uniquement les deux premiers mots
+    words = cleaned_text.split()
+    return ' '.join(words[:2])
+
 
 # Function to search for card details on Scryfall
 def search_scryfall(card_name):
@@ -45,9 +52,8 @@ def search_scryfall(card_name):
 
 def search(img):
     # Example usage
-    image_path = cleaning(img)  # Replace with your card image
     print("Extracting text from image...")
-    text = extract_text(image_path)
+    text = extract_text( cleaning(img) )
     print("Text extracted:")
     print(text)
 
