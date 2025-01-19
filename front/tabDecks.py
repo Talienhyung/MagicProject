@@ -92,5 +92,4 @@ def remove_entry(user_data):
 
     # Update the deck view
     dpg.delete_item(dpg.last_item())
-    
     showDeck([deckIndex])
