@@ -4,7 +4,7 @@ import os
 import functools
 
 cards=[]
-deckPath = "storage\decks"
+deckPath = "storage/decks"
 decks = os.listdir(deckPath)
 
 def create_tabCards():

@@ -1,6 +1,7 @@
 import dearpygui.dearpygui as dpg
 from front.tabCards import *
 from front.tabDecks import *
+from front.tabScan import *
 
 # Créer le contexte
 dpg.create_context()
@@ -13,6 +14,7 @@ with dpg.window(tag="Primary Window"):
     with dpg.tab_bar():
         create_tabDecks()
         create_tabCards()
+        create_tabScan()
 
 
 # Configurer et démarrer l'interface

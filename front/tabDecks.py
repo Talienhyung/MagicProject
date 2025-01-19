@@ -1,7 +1,7 @@
 import dearpygui.dearpygui as dpg
 import os
 
-decksFolder = "storage\decks"
+decksFolder = "storage/decks"
 decks = os.listdir(decksFolder)
 
 def create_tabDecks():
@@ -49,7 +49,7 @@ def showDeck(deckIndex):
         return
 
     with dpg.window(label=f"Deck: {deckName}", width=500, height=400):
-        with open(deckPath, 'r') as f:
+        with open(deckPath, 'r', encoding='ISO-8859-1') as f:
             lines = f.readlines()
 
         headers = lines[0].strip().split(',')
