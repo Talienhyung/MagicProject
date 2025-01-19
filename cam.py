@@ -5,7 +5,7 @@ import numpy as np
 from magic_card_identifier import *
 
 # URL de la caméra (remplacez par votre URL)
-camera_url = 'http://10.70.0.245:8080/video'
+camera_url = 'http://192.168.1.189:8080/video'
 
 # Paramètres
 capture_interval = 2  # Intervalle en secondes

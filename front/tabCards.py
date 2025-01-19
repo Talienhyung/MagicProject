@@ -32,6 +32,7 @@ def create_tabCards():
                     dpg.add_text(f"Name: {card['name']}", parent=results)
                     dpg.add_text(f"Set: {card['set_name']}", parent=results)
                     dpg.add_text(f"Type: {card['type_line']}", parent=results)
+                    dpg.add_text(f"Text: {card['oracle_text']}",wrap=400, parent=results)
                     for button in decks:
                         path = os.path.join(deckPath, button)
                         dpg.add_button(label=f"Add to {button}",parent=results, callback=lambda s, a, u: addCardToDeck(u), user_data=[index, path])
@@ -78,6 +79,11 @@ def polishCards(cards):
     if not cards:
         return
     for card in cards:
+        name = card['name'] = card['name'].replace(',', ';')
+        type_line = card['type_line'].replace('—', '-')
+        set_name = card['set_name'].replace(',', ';')
+        oracle_text = card['oracle_text'].replace(',', ';')
+        oracle_text = oracle_text.replace('—', '-')
         for key, value in card.items():
             if isinstance(value, str):
                 card[key] = value.replace('\n', ' ')

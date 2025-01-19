@@ -8,10 +8,10 @@ import os
 import threading
 
 # Configuration
-camera_url = 'http://10.248.40.220:8080/video'
+camera_url = 'http://192.168.1.189:8080/video'
 capture_interval = 2
 output_folder = "./captured_images/"
-pytesseract.pytesseract.tesseract_cmd = "/usr/bin/tesseract"
+pytesseract.pytesseract.tesseract_cmd = "C:/Program Files/Tesseract-OCR/tesseract.exe"
 
 # Global variables
 scanner_running = False
